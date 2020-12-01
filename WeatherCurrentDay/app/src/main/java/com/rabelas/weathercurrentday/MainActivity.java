@@ -1,6 +1,8 @@
 package com.rabelas.weathercurrentday;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 
 import android.os.Bundle;
@@ -21,12 +23,18 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-
+    ConstraintLayout cl;
+    Toolbar toolbar;
     TextView temp, city, status, date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        cl = findViewById(R.id.cLayout);
+        toolbar = findViewById(R.id.tool_bar);
+        toolbar.setTitle("WEATHER REPORT");
+        setSupportActionBar(toolbar);
 
         temp = (TextView)findViewById(R.id.temp);
         city = (TextView)findViewById(R.id.city);
