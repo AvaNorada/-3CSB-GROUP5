@@ -22,13 +22,13 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView temp, city, status, date,hum,rain;
+    TextView temps, city, status, date,hum,rain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        temp = (TextView)findViewById(R.id.temp);
+        temps = (TextView)findViewById(R.id.temp);
         hum = (TextView)findViewById(R.id.humVal);
         rain = (TextView)findViewById(R.id.rVal);
         city = (TextView)findViewById(R.id.city);
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
                     city.setText(Jcity);
                     status.setText(Jstatus);
-                    temp.setText(String.valueOf(i));
+                    temps.setText(String.valueOf(i));
                 }catch(JSONException e){
                     e.printStackTrace();
                 }
