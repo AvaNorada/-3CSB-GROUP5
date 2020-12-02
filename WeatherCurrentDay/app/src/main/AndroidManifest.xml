@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rabelas.weathercurrentday">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,7 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".VE_A"></activity>
+        <activity android:name=".VE_D" />
+        <activity android:name=".VE_B" />
+        <activity android:name=".Typ_A" />
+        <activity android:name=".Typ_D" />
+        <activity android:name=".Typ_B" />
+        <activity android:name=".Eq_A" />
+        <activity android:name=".Eq_D" />
+        <activity android:name=".Eq_B" />
+        <activity android:name=".VolcanicEruptions" />
+        <activity android:name=".Typhoon" />
+        <activity android:name=".Earthquake" />
+        <activity android:name=".EvacCenter" />
+        <activity android:name=".SafetyTips" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MainMenu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
