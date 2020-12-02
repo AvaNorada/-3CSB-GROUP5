@@ -20,10 +20,10 @@
         <activity android:name=".Eq_A" />
         <activity android:name=".Eq_D" />
         <activity android:name=".Eq_B" />
-        <activity android:name=".VolcanicEruptions" />
-        <activity android:name=".Typhoon" />
-        <activity android:name=".Earthquake" />
-        <activity android:name=".EvacCenter" />
+        <activity android:name=".VolcanicEruptionsTips" />
+        <activity android:name=".TyphoonTips" />
+        <activity android:name=".EarthquakeTips" />
+        <activity android:name=".EvacCenterPage" />
         <activity android:name=".SafetyTips" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MainMenu">
