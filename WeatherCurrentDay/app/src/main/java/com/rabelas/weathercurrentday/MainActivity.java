@@ -23,20 +23,31 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    TextView temperature, city, status, date,hum,rain;
+
     ConstraintLayout cl;
     Toolbar toolbar;
-    TextView temp, city, status, date;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        temperature = (TextView)findViewById(R.id.temp);
+        hum = (TextView)findViewById(R.id.humVal);
+        rain = (TextView)findViewById(R.id.rVal);
 
         cl = findViewById(R.id.cLayout);
         toolbar = findViewById(R.id.tool_bar);
         toolbar.setTitle("WEATHER REPORT");
         setSupportActionBar(toolbar);
 
-        temp = (TextView)findViewById(R.id.temp);
+        temperature = (TextView)findViewById(R.id.temp);
+
         city = (TextView)findViewById(R.id.city);
         status = (TextView)findViewById(R.id.status);
         date = (TextView)findViewById(R.id.date);
@@ -51,9 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     JSONObject main_object = response.getJSONObject("main");
+                    JSONObject rain_object = response.getJSONObject("rain");
                     JSONArray array = response.getJSONArray("weather");
                     JSONObject object = array.getJSONObject(0);
                     String Jtemp = String.valueOf(main_object.getDouble("temp"));
+                    String Jhum = String.valueOf(main_object.getDouble("humidity"));
+                    String Jrain = String.valueOf(rain_object.getDouble("1h"));
                     String Jstatus = object.getString("description");
                     String Jcity = response.getString("name");
 
@@ -62,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
                     String formatted_date = sdf.format(calendar.getTime());
 
                     date.setText(formatted_date);
+                    hum.setText(Jhum.concat("%"));
+                    rain.setText(Jrain.concat("mm"));
                     double temp_int = Double.parseDouble(Jtemp);
                     double centi = (temp_int - 32)/1.8000;
                     centi = Math.round(centi);
@@ -69,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
                     city.setText(Jcity);
                     status.setText(Jstatus);
-                    temp.setText(String.valueOf(i));
+                    temperature.setText(String.valueOf(i));
                 }catch(JSONException e){
                     e.printStackTrace();
                 }
