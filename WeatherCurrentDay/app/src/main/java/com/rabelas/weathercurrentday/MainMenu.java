@@ -41,10 +41,6 @@ public class MainMenu extends AppCompatActivity implements AdapterView.OnItemCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        ListView listView=findViewById(R.id.listView);
-        listView.setAdapter(new MainMenuAdapter(this));
-        listView.setOnItemClickListener(this);
-
         cl = findViewById(R.id.cLayout);
         toolbar = findViewById(R.id.tool_bar);
         toolbar.setTitle("DELUBYOCATION");

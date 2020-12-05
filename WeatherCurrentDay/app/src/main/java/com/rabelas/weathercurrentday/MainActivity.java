@@ -34,9 +34,11 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Toolbar toolbar;
     ConstraintLayout cl;
+
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     final String iconUrl="http://openweathermap.org/img/wn/";
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ImageView iconView;
     String Jrain;
 
+    String Jhum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,12 +68,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+
          temperature = (TextView)findViewById(R.id.temp);
         iconView =  findViewById(R.id.weattherIcon);
 
         city = (TextView)findViewById(R.id.city);
         status = (TextView)findViewById(R.id.status);
         date = (TextView)findViewById(R.id.date);
+        rain = findViewById(R.id.rVal);
+        hum = findViewById(R.id.humVal);
 
         findWeather();
     }
@@ -79,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
                 try {
                     JSONObject main_object = response.getJSONObject("main");
 
@@ -89,18 +94,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String Jtemp = String.valueOf(main_object.getDouble("temp"));
                     String Jhum = String.valueOf(main_object.getDouble("humidity"));
                    String Jicon = object.getString("icon");
-
-
                     String Jstatus = object.getString("description");
                     String Jcity = response.getString("name");
                         try{
+
 
                             JSONObject rain_object = response.getJSONObject("rain");
 
                             Jrain = String.valueOf(rain_object.getDouble("1h"));
                         }catch (JSONException e){
                             Jrain="00";
+
                         }
+
 
                     Calendar calendar = Calendar.getInstance();
                     SimpleDateFormat sdf = new SimpleDateFormat(" MMMM dd, YYYY, \n EEEE");
@@ -109,8 +115,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     date.setText(formatted_date);
 
                     hum.setText(Jhum.concat("%"));
-                   rain.setText(Jrain.concat("mm"));
-
+                    rain.setText(Jrain.concat("mm"));
                     double temp_int = Double.parseDouble(Jtemp);
                     double centi = (temp_int - 32)/1.8000;
                     centi = Math.round(centi);
