@@ -4,14 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< Updated upstream
-    tools:context=".VolcanicEruptions">
-=======
+
     tools:context=".VolcanicEruptionsTips"
     android:id="@+id/drawer"
     tools:openDrawer="start"
     android:fitsSystemWindows="true">
->>>>>>> Stashed changes
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
@@ -21,46 +18,6 @@
         app:menu="@menu/main_menu"
         android:layout_gravity="start"/>
 
-<<<<<<< Updated upstream
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="ve_B"
-        android:text="What to do BEFORE a Volcanic Eruption"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="ve_D"
-        android:text="What to do DURING a Volcanic Eruption"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.482" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="ve_A"
-        android:text="What to do AFTER a Volcanic Eruption"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71" />
-=======
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/cLayout">
@@ -68,7 +25,7 @@
         <include
             android:id="@+id/tool_bar"
             layout="@layout/toolbar"/>
->>>>>>> Stashed changes
+
 
         <ListView
             android:id="@+id/listView"
@@ -94,5 +51,6 @@
             app:srcCompat="@drawable/volcanic" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

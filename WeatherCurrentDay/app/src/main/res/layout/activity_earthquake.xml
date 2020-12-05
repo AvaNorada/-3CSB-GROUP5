@@ -4,54 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< Updated upstream
-    tools:context=".Earthquake">
-
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/toolbar"/>
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="eq_B"
-        android:text="What to do BEFORE an Earthquake"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="eq_D"
-        android:text="What to do DURING an Earthquake"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.482" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="eq_A"
-        android:text="What to do AFTER an Earthquake"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-=======
     tools:context=".EarthquakeTips"
     android:id="@+id/drawer"
     tools:openDrawer="start"
@@ -100,4 +52,4 @@
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
->>>>>>> Stashed changes
+

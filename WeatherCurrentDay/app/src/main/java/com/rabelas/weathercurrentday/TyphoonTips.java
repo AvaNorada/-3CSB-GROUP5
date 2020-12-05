@@ -1,5 +1,6 @@
 package com.rabelas.weathercurrentday;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +12,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -22,6 +25,7 @@ public class TyphoonTips extends AppCompatActivity implements AdapterView.OnItem
     ConstraintLayout cl;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,7 @@ public class TyphoonTips extends AppCompatActivity implements AdapterView.OnItem
         toolbar = findViewById(R.id.tool_bar);
         toolbar.setTitle("Typhoon");
         setSupportActionBar(toolbar);
+
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_view);
 
@@ -43,6 +48,7 @@ public class TyphoonTips extends AppCompatActivity implements AdapterView.OnItem
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -92,4 +98,5 @@ public class TyphoonTips extends AppCompatActivity implements AdapterView.OnItem
         }
         return true;
     }
+
 }

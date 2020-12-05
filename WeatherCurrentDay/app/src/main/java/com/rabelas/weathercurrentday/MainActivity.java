@@ -74,8 +74,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String Jstatus = object.getString("description");
                     String Jcity = response.getString("name");
 
-
-
                     Calendar calendar = Calendar.getInstance();
                     SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MM-dd-YYYY");
                     String formatted_date = sdf.format(calendar.getTime());

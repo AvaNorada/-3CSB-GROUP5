@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">WeatherCurrentDay</string>
     <string name="action_settings" />
-<<<<<<< Updated upstream
-=======
+
     <string name="open">Open</string>
     <string name="close">Close</string>
+
+
     <string-array name="eName">
         <item>Almario Elementary School, Barangay 20</item>
         <item>Tondo Community Initiative(TCI), Barangay 128</item>
@@ -51,5 +52,5 @@
         <item>WHAT TO DO DURING A VOLCANIC ERUPTION</item>
         <item>WHAT TO DO AFTER A VOLCANIC ERUPTION</item>
     </string-array>
->>>>>>> Stashed changes
+
 </resources>

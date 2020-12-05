@@ -12,16 +12,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-
-<<<<<<< Updated upstream
-public class SafetyTips extends AppCompatActivity {
-
-    ConstraintLayout cl;
-=======
+import android.widget.AdapterView;
+import android.widget.ListView;
 import com.google.android.material.navigation.NavigationView;
 
 public class SafetyTips extends AppCompatActivity implements AdapterView.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener{
->>>>>>> Stashed changes
+
     Toolbar toolbar;
     ConstraintLayout cl;
     DrawerLayout drawerLayout;
@@ -30,6 +26,10 @@ public class SafetyTips extends AppCompatActivity implements AdapterView.OnItemC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_safety_tips);
+
+        ListView listView=findViewById(R.id.listView);
+        listView.setAdapter(new SafetyTipsAdapter(this));
+        listView.setOnItemClickListener(this);
 
         cl = findViewById(R.id.cLayout);
         toolbar = findViewById(R.id.tool_bar);
@@ -45,17 +45,22 @@ public class SafetyTips extends AppCompatActivity implements AdapterView.OnItemC
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    public void eQuake(View v){
-        Intent i = new Intent(this, Earthquake.class);
-        startActivity(i);
-    }
-    public void tYP(View v){
-        Intent i = new Intent(this, Typhoon.class);
-        startActivity(i);
-    }
-    public void vErup(View v){
-        Intent i = new Intent(this, VolcanicEruptions.class);
-        startActivity(i);
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        switch (position) {
+            case 0:
+                Intent i = new Intent(this, EarthquakeTips.class);
+                startActivity(i);
+                break;
+            case 1:
+                Intent j = new Intent(this, TyphoonTips.class);
+                startActivity(j);
+                break;
+            case 2:
+                Intent k = new Intent(this, VolcanicEruptionsTips.class);
+                startActivity(k);
+                break;
+        }
     }
 
     @Override

@@ -1,11 +1,14 @@
 package com.rabelas.weathercurrentday;
 
-<<<<<<< Updated upstream
+
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-=======
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,17 +16,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
->>>>>>> Stashed changes
+
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
-<<<<<<< Updated upstream
-public class MainMenu extends AppCompatActivity {
-    Toolbar toolbar;
-    ConstraintLayout cl;
-=======
+
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -34,32 +36,20 @@ public class MainMenu extends AppCompatActivity implements AdapterView.OnItemCli
     NavigationView navigationView;
 
 
->>>>>>> Stashed changes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        ListView listView=findViewById(R.id.listView);
+        listView.setAdapter(new MainMenuAdapter(this));
+        listView.setOnItemClickListener(this);
+
         cl = findViewById(R.id.cLayout);
         toolbar = findViewById(R.id.tool_bar);
         toolbar.setTitle("DELUBYOCATION");
         setSupportActionBar(toolbar);
-<<<<<<< Updated upstream
-    }
 
-
-    public void showWR(View v){
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
-    }
-    public void showST(View v){
-        Intent i = new Intent(this, SafetyTips.class);
-        startActivity(i);
-    }
-    public void showEC(View v){
-        Intent i = new Intent(this, EvacCenter.class);
-        startActivity(i);
-=======
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_view);
         //toolbarNav = (Toolbar) findViewById(R.id.nav_toolbar);
@@ -85,6 +75,7 @@ public class MainMenu extends AppCompatActivity implements AdapterView.OnItemCli
     }
 
 
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch(position){
@@ -98,7 +89,7 @@ public class MainMenu extends AppCompatActivity implements AdapterView.OnItemCli
                 startActivity(k);
                 break;
         }
->>>>>>> Stashed changes
+
     }
 
     @Override
@@ -117,5 +108,6 @@ public class MainMenu extends AppCompatActivity implements AdapterView.OnItemCli
                 break;
         }
         return true;
+
     }
 }

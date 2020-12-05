@@ -4,14 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< Updated upstream
-    tools:context=".EvacCenter">
-=======
     tools:context=".EvacCenterPage"
     android:id="@+id/drawer"
     tools:openDrawer="start"
     android:fitsSystemWindows="true">
->>>>>>> Stashed changes
+
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
