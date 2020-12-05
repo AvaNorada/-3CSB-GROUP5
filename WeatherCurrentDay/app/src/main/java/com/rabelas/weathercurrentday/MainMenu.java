@@ -28,6 +28,36 @@ public class MainMenu extends AppCompatActivity implements AdapterView.OnItemCli
 
         ListView listView=findViewById(R.id.listView);
         listView.setAdapter(new MainMenuAdapter(this));
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+
+        drawerLayout = findViewById(R.id.drawer);
+        navigationView = findViewById(R.id.nav_view);
+
+<<<<<<< Updated upstream
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
+        actionBarDrawerToggle.syncState();
+
+>>>>>>> Stashed changes
+        listView.setOnItemClickListener(this);
+=======
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+>>>>>>> Stashed changes
+
+        cl = findViewById(R.id.cLayout);
+        toolbar = findViewById(R.id.tool_bar);
+        toolbar.setTitle("DELUBYOCATION");
+        setSupportActionBar(toolbar);
+>>>>>>> Stashed changes
 
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_view);

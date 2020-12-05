@@ -17,10 +17,23 @@
         layout="@layout/toolbar"/>
 
     <com.google.android.material.navigation.NavigationView
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+        android:layout_width="wrap_content"
+=======
+        android:id="@+id/nav_view"
+<<<<<<< Updated upstream
+        app:menu="@menu/drawer_menu"
+        android:layout_width="match_parent"
+>>>>>>> Stashed changes
+        android:layout_height="match_parent"
+>>>>>>> Stashed changes
         android:id="@+id/nav_view"
         app:menu="@menu/drawer_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+<<<<<<< Updated upstream
         android:layout_gravity="start"
         android:fitsSystemWindows="true">
 
@@ -32,6 +45,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainMenu"
+=======
+<<<<<<< Updated upstream
+
+=======
+        tools:context=".MainMenu"
+=======
+        app:headerLayout="@layout/header"
+        app:menu="@menu/main_menu"
+        android:layout_gravity="start"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         android:id="@+id/cLayout">
 
         <include
@@ -47,7 +76,25 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+<<<<<<< Updated upstream
             app:layout_constraintVertical_bias="1.0" />
 
+=======
+<<<<<<< Updated upstream
+
+            app:layout_constraintVertical_bias="1.0" >
+
+        </ListView>
+=======
+<<<<<<< Updated upstream
+            app:layout_constraintVertical_bias="1.0" />
+
+=======
+            app:layout_constraintVertical_bias="1.0" >
+
+        </ListView>
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
