@@ -1,66 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer">
-
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/drawer_content"/>
-
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/toolbar"/>
+    tools:context=".MainMenu"
+    android:id="@+id/drawer"
+    tools:openDrawer="start"
+    android:fitsSystemWindows="true">
 
     <com.google.android.material.navigation.NavigationView
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
+
         android:layout_width="wrap_content"
-=======
+        android:layout_height="match_parent"
         android:id="@+id/nav_view"
-<<<<<<< Updated upstream
-        app:menu="@menu/drawer_menu"
-        android:layout_width="match_parent"
->>>>>>> Stashed changes
-        android:layout_height="match_parent"
->>>>>>> Stashed changes
-        android:id="@+id/nav_view"
-        app:menu="@menu/drawer_menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-<<<<<<< Updated upstream
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true">
-
-    </com.google.android.material.navigation.NavigationView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainMenu"
-=======
-<<<<<<< Updated upstream
-
-=======
-        tools:context=".MainMenu"
-=======
         app:headerLayout="@layout/header"
         app:menu="@menu/main_menu"
         android:layout_gravity="start"/>
 
+
+</com.google.android.material.navigation.NavigationView>
+   
+
+ 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
         android:id="@+id/cLayout">
 
         <include
@@ -76,25 +46,15 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-<<<<<<< Updated upstream
-            app:layout_constraintVertical_bias="1.0" />
 
-=======
-<<<<<<< Updated upstream
+
+
+
 
             app:layout_constraintVertical_bias="1.0" >
 
         </ListView>
-=======
-<<<<<<< Updated upstream
-            app:layout_constraintVertical_bias="1.0" />
 
-=======
-            app:layout_constraintVertical_bias="1.0" >
-
-        </ListView>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
+

@@ -3,6 +3,7 @@ package com.rabelas.weathercurrentday;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
@@ -12,12 +13,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+
 import com.google.android.material.navigation.NavigationView;
 
-public class SafetyTips extends AppCompatActivity implements AdapterView.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener{
-
+public class Settings extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
     ConstraintLayout cl;
     DrawerLayout drawerLayout;
@@ -25,15 +24,11 @@ public class SafetyTips extends AppCompatActivity implements AdapterView.OnItemC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_safety_tips);
-
-        ListView listView=findViewById(R.id.listView);
-        listView.setAdapter(new SafetyTipsAdapter(this));
-        listView.setOnItemClickListener(this);
+        setContentView(R.layout.activity_settings);
 
         cl = findViewById(R.id.cLayout);
         toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitle("SAFETY TIPS AND GUIDELINES");
+        toolbar.setTitle("Settings");
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_view);
@@ -43,24 +38,6 @@ public class SafetyTips extends AppCompatActivity implements AdapterView.OnItemC
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        switch (position) {
-            case 0:
-                Intent i = new Intent(this, EarthquakeTips.class);
-                startActivity(i);
-                break;
-            case 1:
-                Intent j = new Intent(this, TyphoonTips.class);
-                startActivity(j);
-                break;
-            case 2:
-                Intent k = new Intent(this, VolcanicEruptionsTips.class);
-                startActivity(k);
-                break;
-        }
     }
 
     @Override
@@ -82,8 +59,6 @@ public class SafetyTips extends AppCompatActivity implements AdapterView.OnItemC
                 startActivity(intent);
                 break;
             case R.id.nav_settings:
-                Intent intent1 = new Intent(this, Settings.class);
-                startActivity(intent1);
                 break;
             case R.id.nav_about:
                 Intent intent2 = new Intent(this, About.class);
