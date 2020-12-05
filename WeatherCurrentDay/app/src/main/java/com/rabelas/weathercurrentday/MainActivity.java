@@ -84,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
                             Jrain="00";
                         }
 
-
-
                     Calendar calendar = Calendar.getInstance();
                     SimpleDateFormat sdf = new SimpleDateFormat(" MMMM dd, YYYY, \n EEEE");
                     String formatted_date = sdf.format(calendar.getTime());

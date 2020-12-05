@@ -1,4 +1,52 @@
 <resources>
     <string name="app_name">WeatherCurrentDay</string>
     <string name="action_settings" />
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string-array name="eName">
+        <item>Almario Elementary School, Barangay 20</item>
+        <item>Tondo Community Initiative(TCI), Barangay 128</item>
+        <item>Barangay 105 Covered Court</item>
+        <item>Sampalukan Elementary, Barangay 24</item>
+        <item>Bagong Silang Elementary School, Barangay 119</item>
+        <item>Llano Elementary School, Barangay 167</item>
+    </string-array>
+    <string-array name="City">
+        <item>Manila</item>
+        <item>Manila</item>
+        <item>Manila</item>
+        <item>Caloocan</item>
+        <item>Caloocan</item>
+        <item>Caloocan</item>
+    </string-array>
+    <string-array name="MainMenu">
+        <item>Weather Report</item>
+        <item>Safety Tips</item>
+        <item>Evacuation Center</item>
+    </string-array>
+    <string-array name="MainMenu2">
+        <item>Check the weather today</item>
+        <item>Know what to do during a calamity</item>
+        <item>Find evacuation center near you</item>
+    </string-array>
+    <string-array name="Guidelines">
+        <item>Earthquake</item>
+        <item>Typhoon</item>
+        <item>Volcanic Eruptions</item>
+    </string-array>
+    <string-array name="Earthquake">
+        <item>WHAT TO DO BEFORE AN EARTHQUAKE</item>
+        <item>WHAT TO DO DURING AN EARTHQUAKE</item>
+        <item>WHAT TO DO AFTER AN EARTHQUAKE</item>
+    </string-array>
+    <string-array name="Typhoon">
+        <item>WHAT TO DO BEFORE A TYPHOON</item>
+        <item>WHAT TO DO DURING A TYPHOON</item>
+        <item>WHAT TO DO AFTER A TYPHOON</item>
+    </string-array>
+    <string-array name="VolcanicEruption">
+        <item>WHAT TO DO BEFORE A VOLCANIC ERUPTION</item>
+        <item>WHAT TO DO DURING A VOLCANIC ERUPTION</item>
+        <item>WHAT TO DO AFTER A VOLCANIC ERUPTION</item>
+    </string-array>
 </resources>
