@@ -9,24 +9,37 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class VE_D extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class EvacCenterPage extends AppCompatActivity implements AdapterView.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener{
+    CustomAdapter customAdapter;
     Toolbar toolbar;
     ConstraintLayout cl;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ve_d);
+        setContentView(R.layout.list);
+
+        ListView listView=findViewById(R.id.listView);
+
+        customAdapter = new CustomAdapter(this);
+        listView.setAdapter(customAdapter);
+        listView.setOnItemClickListener(this);
 
         cl = findViewById(R.id.cLayout);
         toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitle("DURING Volcanic Eruption");
+        toolbar.setTitle("Evacuation Centers");
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_view);
@@ -36,6 +49,15 @@ public class VE_D extends AppCompatActivity implements NavigationView.OnNavigati
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+        String name = customAdapter.evacList.get(position).name;
+        String toastll = "You selected " + customAdapter.evacList.get(position);
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse("geo:0,0?q=" + name));
+        Toast.makeText(getApplicationContext(), toastll, Toast.LENGTH_SHORT).show();
+        startActivity(i);
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.rabelas.weathercurrentday;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
@@ -11,10 +12,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class VE_D extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Settings extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
     ConstraintLayout cl;
     DrawerLayout drawerLayout;
@@ -22,11 +24,11 @@ public class VE_D extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ve_d);
+        setContentView(R.layout.activity_settings);
 
         cl = findViewById(R.id.cLayout);
         toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitle("DURING Volcanic Eruption");
+        toolbar.setTitle("Settings");
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_view);
@@ -57,8 +59,6 @@ public class VE_D extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(intent);
                 break;
             case R.id.nav_settings:
-                Intent intent1 = new Intent(this, Settings.class);
-                startActivity(intent1);
                 break;
             case R.id.nav_about:
                 Intent intent2 = new Intent(this, About.class);

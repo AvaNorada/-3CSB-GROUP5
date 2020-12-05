@@ -11,10 +11,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class VE_D extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class About extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
     ConstraintLayout cl;
     DrawerLayout drawerLayout;
@@ -22,11 +23,11 @@ public class VE_D extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ve_d);
+        setContentView(R.layout.activity_about);
 
         cl = findViewById(R.id.cLayout);
         toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitle("DURING Volcanic Eruption");
+        toolbar.setTitle("About");
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_view);
@@ -37,7 +38,6 @@ public class VE_D extends AppCompatActivity implements NavigationView.OnNavigati
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
     }
-
     @Override
     public void onBackPressed(){
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
@@ -57,12 +57,10 @@ public class VE_D extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(intent);
                 break;
             case R.id.nav_settings:
-                Intent intent1 = new Intent(this, Settings.class);
-                startActivity(intent1);
+                Intent intent2 = new Intent(this, Settings.class);
+                startActivity(intent2);
                 break;
             case R.id.nav_about:
-                Intent intent2 = new Intent(this, About.class);
-                startActivity(intent2);
                 break;
         }
         return true;

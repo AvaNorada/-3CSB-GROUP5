@@ -11,10 +11,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class VE_D extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+public class VolcanicEruptionsTips extends AppCompatActivity implements AdapterView.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
     ConstraintLayout cl;
     DrawerLayout drawerLayout;
@@ -22,11 +26,15 @@ public class VE_D extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ve_d);
+        setContentView(R.layout.activity_volcanic_eruptions);
+
+        ListView listView=findViewById(R.id.listView);
+        listView.setAdapter(new VolcanicEruptionsAdapter(this));
+        listView.setOnItemClickListener(this);
 
         cl = findViewById(R.id.cLayout);
         toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitle("DURING Volcanic Eruption");
+        toolbar.setTitle("Volcanic Eruption");
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_view);
@@ -36,6 +44,24 @@ public class VE_D extends AppCompatActivity implements NavigationView.OnNavigati
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        switch (position) {
+            case 0:
+                Intent i = new Intent(this, VE_B.class);
+                startActivity(i);
+                break;
+            case 1:
+                Intent j = new Intent(this, VE_D.class);
+                startActivity(j);
+                break;
+            case 2:
+                Intent k = new Intent(this, VE_A.class);
+                startActivity(k);
+                break;
+        }
     }
 
     @Override
