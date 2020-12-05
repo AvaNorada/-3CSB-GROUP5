@@ -1,11 +1,17 @@
 package com.rabelas.weathercurrentday;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -14,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,9 +29,11 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
-    ConstraintLayout cl;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Toolbar toolbar;
+    ConstraintLayout cl;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
     TextView temp, city, status, date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +42,16 @@ public class MainActivity extends AppCompatActivity {
 
         cl = findViewById(R.id.cLayout);
         toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitle("WEATHER REPORT");
+        toolbar.setTitle("Weather Report");
         setSupportActionBar(toolbar);
+        drawerLayout = findViewById(R.id.drawer);
+        navigationView = findViewById(R.id.nav_view);
+
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
 
         temp = (TextView)findViewById(R.id.temp);
         city = (TextView)findViewById(R.id.city);
@@ -84,5 +101,34 @@ public class MainActivity extends AppCompatActivity {
         );
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(jor);
+    }
+    @Override
+    public void onBackPressed(){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer((GravityCompat.START));
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        switch (menuItem.getItemId()){
+            case R.id.nav_home:
+                Intent intent = new Intent(this, MainMenu.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_settings:
+                Intent intent1 = new Intent(this, Settings.class);
+                startActivity(intent1);
+                break;
+            case R.id.nav_about:
+                Intent intent2 = new Intent(this, About.class);
+                startActivity(intent2);
+                break;
+        }
+        return true;
     }
 }
