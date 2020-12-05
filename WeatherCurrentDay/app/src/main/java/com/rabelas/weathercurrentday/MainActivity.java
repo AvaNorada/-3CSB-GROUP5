@@ -11,7 +11,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
 import android.view.MenuItem;
+
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -20,7 +23,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 import com.google.android.material.navigation.NavigationView;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +39,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ConstraintLayout cl;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    TextView temp, city, status, date;
+    final String iconUrl="http://openweathermap.org/img/wn/";
+    TextView temperature, city, status, date,hum,rain;
+    ImageView iconView;
+    String Jrain;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +57,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_view);
 
+
+       
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        temp = (TextView)findViewById(R.id.temp);
+         temperature = (TextView)findViewById(R.id.temp);
+        iconView =  findViewById(R.id.weattherIcon);
+
         city = (TextView)findViewById(R.id.city);
         status = (TextView)findViewById(R.id.status);
         date = (TextView)findViewById(R.id.date);
@@ -68,27 +82,53 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 try {
                     JSONObject main_object = response.getJSONObject("main");
+
+
                     JSONArray array = response.getJSONArray("weather");
                     JSONObject object = array.getJSONObject(0);
                     String Jtemp = String.valueOf(main_object.getDouble("temp"));
+                    String Jhum = String.valueOf(main_object.getDouble("humidity"));
+                   String Jicon = object.getString("icon");
+
+
                     String Jstatus = object.getString("description");
                     String Jcity = response.getString("name");
+                        try{
+
+                            JSONObject rain_object = response.getJSONObject("rain");
+
+                            Jrain = String.valueOf(rain_object.getDouble("1h"));
+                        }catch (JSONException e){
+                            Jrain="00";
+                        }
 
                     Calendar calendar = Calendar.getInstance();
-                    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MM-dd-YYYY");
+                    SimpleDateFormat sdf = new SimpleDateFormat(" MMMM dd, YYYY, \n EEEE");
                     String formatted_date = sdf.format(calendar.getTime());
 
                     date.setText(formatted_date);
+
+                    hum.setText(Jhum.concat("%"));
+                   rain.setText(Jrain.concat("mm"));
+
                     double temp_int = Double.parseDouble(Jtemp);
                     double centi = (temp_int - 32)/1.8000;
                     centi = Math.round(centi);
                     int i = (int)centi;
 
+                    Log.d("check", "onResponse: "+Jtemp);
                     city.setText(Jcity);
                     status.setText(Jstatus);
-                    temp.setText(String.valueOf(i));
+
+                    temperature.setText(String.valueOf(i));
+
+                    Picasso.get().load(iconUrl + Jicon+"@4x.png").into(iconView);
+                    //IMG_URL + weather.iconName +".png"
+
                 }catch(JSONException e){
                     e.printStackTrace();
+                }finally{
+
                 }
 
             }
