@@ -43,11 +43,7 @@ public class Eq_B extends AppCompatActivity {
                     //Document Fdoc =  Jsoup.connect("http://people360.com.ph/what-to-do-before-during-and-after-a-typhoon").get();
 
                     Elements EText = Edoc.select("#divEditor69697407-c5dd-435d-8184-85e3d7c18d9e");
-                    //Element VText = Vdoc.body();
-                    //Elements VText = Vdoc.select("div.mk-single-content.clearfix");
-                    //Elements FText = Fdoc.select("#content");
 
-                    // Element bodyText = Edoc.body();
                     data.setPageBody(EText.text());
 
 
