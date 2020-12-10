@@ -53,4 +53,9 @@
         <item>WHAT TO DO AFTER A VOLCANIC ERUPTION</item>
     </string-array>
 
+    <string-array name="cityList">
+        <item>-</item>
+        <item>Manila</item>
+        <item>Pasig</item>
+    </string-array>
 </resources>
