@@ -38,6 +38,42 @@ public class Eq_B extends AppCompatActivity implements NavigationView.OnNavigati
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+
+        final TextView bodyText= findViewById(R.id.webBody);
+        //final TextView titleText= findViewById(R.id.webTitle);
+
+        new Thread(new Runnable() {
+
+            WebpageData data = new WebpageData();
+            @Override
+            public void run() {
+
+
+                try {
+                    Document Edoc =  Jsoup.connect("https://www.cofh.org/173/Before-During-and-After-an-Earthquake").get();
+                    //Document Vdoc =  Jsoup.connect("https://coins.ph/blog/what-to-do-volcanic-eruption-tips/").get();
+                    //Document Fdoc =  Jsoup.connect("http://people360.com.ph/what-to-do-before-during-and-after-a-typhoon").get();
+
+                    Elements EText = Edoc.select("#divEditor69697407-c5dd-435d-8184-85e3d7c18d9e");
+
+                    data.setPageBody(EText.text());
+
+
+
+                    data.extractText("Before","During");//this is dependent on the line above
+                    // before.extractText("After:","https");//this is dependent on the line above
+                    //before.extractText("During:","After:");//this is dependent on the line above
+                    // before.extractText("Before:","During");//this is dependent on the line above
+
+
+
+
+                    //before.extractText("THE ERUPTION","Stay safe");//this is dependent on the line above
+                    //before.extractText("ERUPTION","AFTER");//this is dependent on the line above,
+                    //before.extractText("EXPLOSION","DURING");//this is dependent on the line above,
+                    //before.setPageTitle(EBdoc.title());
+
+
     @Override
     public void onBackPressed(){
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
@@ -47,6 +83,7 @@ public class Eq_B extends AppCompatActivity implements NavigationView.OnNavigati
             super.onBackPressed();
         }
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
