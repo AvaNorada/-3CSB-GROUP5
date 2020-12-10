@@ -1,23 +1,71 @@
 package com.rabelas.weathercurrentday;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
+public class EvacCenter {
+    String name, city; //menu, guidelines, equake, typhoon, veruption;
 
-import android.os.Bundle;
+    public String getName() {
+        return name;
+    }
 
-public class EvacCenter extends AppCompatActivity {
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    Toolbar toolbar;
-    ConstraintLayout cl;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_evac_center);
+    public String getCity() {
+        return city;
+    }
 
-        cl = findViewById(R.id.cLayout);
-        toolbar = findViewById(R.id.tool_bar);
-        toolbar.setTitle("Evacuation Centers");
-        setSupportActionBar(toolbar);
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+   /* public String getMenu() {
+        return menu;
+    }
+
+    public void setMenu(String menu) {
+        this.menu = menu;
+    }
+
+    public String getGuidelines() {
+        return guidelines;
+    }
+
+    public void setGuidelines(String guidelines) {
+        this.guidelines = guidelines;
+    }
+
+    public String getEquake() {
+        return equake;
+    }
+
+    public void setEquake(String equake) {
+        this.equake = equake;
+    }
+
+    public String getTyphoon() {
+        return typhoon;
+    }
+
+    public void setTyphoon(String typhoon) {
+        this.typhoon = typhoon;
+    }
+
+    public String getVeruption() {
+        return veruption;
+    }
+
+    public void setVeruption(String veruption) {
+        this.veruption = veruption;
+    }*/
+
+    EvacCenter(String name, String city){ //String menu, String guidelines, String equake, String typhoon, String veruption){
+        this.name=name;
+        this.city=city;
+        /*this.menu=menu;
+        this.guidelines=guidelines;
+        this.equake=equake;
+        this.typhoon=typhoon;
+        this.veruption=veruption;*/
     }
 }

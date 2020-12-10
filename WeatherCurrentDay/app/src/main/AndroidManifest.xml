@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VE_A"></activity>
+        <activity android:name=".About"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".VE_A" />
         <activity android:name=".VE_D" />
         <activity android:name=".VE_B" />
         <activity android:name=".Typ_A" />
@@ -20,10 +22,10 @@
         <activity android:name=".Eq_A" />
         <activity android:name=".Eq_D" />
         <activity android:name=".Eq_B" />
-        <activity android:name=".VolcanicEruptions" />
-        <activity android:name=".Typhoon" />
-        <activity android:name=".Earthquake" />
-        <activity android:name=".EvacCenter" />
+        <activity android:name=".VolcanicEruptionsTips" />
+        <activity android:name=".TyphoonTips" />
+        <activity android:name=".EarthquakeTips" />
+        <activity android:name=".EvacCenterPage" />
         <activity android:name=".SafetyTips" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MainMenu">
