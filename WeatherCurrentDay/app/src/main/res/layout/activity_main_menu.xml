@@ -22,10 +22,9 @@
         android:layout_gravity="start"/>
 
 
-</com.google.android.material.navigation.NavigationView>
-   
 
- 
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
