@@ -6,10 +6,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,9 +26,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class Settings extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
     Toolbar toolbar;
@@ -29,6 +46,11 @@ public class Settings extends AppCompatActivity implements NavigationView.OnNavi
     NavigationView navigationView;
     Button save;
     Spinner spinner;
+    Boolean auto;
+    FusedLocationProviderClient fusedLocationProviderClient;
+    TextView textView4;
+    public static final String PREF_NAME = "com.rabelas.weathercurrentday";
+    public static final String SHARED_PREFS = "sharedPrefs";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +73,10 @@ public class Settings extends AppCompatActivity implements NavigationView.OnNavi
                 R.array.cityList, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener( this);
+        spinner.setOnItemSelectedListener(this);
+
+        textView4 = findViewById(R.id.text_View4);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
     }
 
     @Override
@@ -92,19 +117,37 @@ public class Settings extends AppCompatActivity implements NavigationView.OnNavi
                 if (checked)
                     // Pirates are the best
                     save.setVisibility(View.VISIBLE);
+                    auto = true;
                     spinner.setVisibility(View.INVISIBLE);
                     break;
             case R.id.radio_ninjas:
                 if (checked)
                     // Ninjas rule
                     save.setVisibility(View.VISIBLE);
+                    auto = false;
                     spinner.setVisibility(View.VISIBLE);
                     break;
         }
     }
 
     public void saveSettings(View v){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
         save.setVisibility(View.INVISIBLE);
+        if (auto){
+            //Everything for sharedpref
+            if (ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                saveData();
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+            }
+        } else {
+            //get from choices and save to shared pref
+            String text = spinner.getSelectedItem().toString();
+            editor.putString("cityname", text);
+            editor.apply();
+        }
         Toast.makeText(this, "Preference Saved!", Toast.LENGTH_SHORT).show();
     }
 
@@ -117,5 +160,46 @@ public class Settings extends AppCompatActivity implements NavigationView.OnNavi
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
+    }
+
+    public void saveData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            /*
+             TODO: Consider calling
+                ActivityCompat#requestPermissions
+             here to request the missing permissions, and then overriding
+               public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                                      int[] grantResults)
+             to handle the case where the user grants the permission. See the documentation
+             for ActivityCompat#requestPermissions for more details.
+            */
+            return;
+        }
+        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                Location location = task.getResult();
+                if (location != null) {
+                    Geocoder geocoder = new Geocoder(Settings.this, Locale.getDefault());
+                    try {
+                        List<Address> addresses = geocoder.getFromLocation(
+                                location.getLatitude(), location.getLongitude(), 1);
+                        textView4.setText(addresses.get(0).getLocality());
+                        String city = textView4.getText().toString();
+                        editor.putString("cityname", city);
+                        editor.apply();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
+    public static String loadData(Context context){
+        SharedPreferences pref = context.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+        return pref.getString("cityname", "Caloocan");
     }
 }

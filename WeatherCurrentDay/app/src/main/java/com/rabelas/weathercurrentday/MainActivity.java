@@ -9,7 +9,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -38,16 +40,17 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Toolbar toolbar;
     ConstraintLayout cl;
-
+    public SharedPreferences sharedPreferences;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     final String iconUrl="http://openweathermap.org/img/wn/";
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String MY_PREF_NAME = "com.rabelas.weathercurrentday";
     TextView temperature, city, status, date,hum,rain;
     ImageView iconView;
     String Jrain;
-
     String Jhum;
-
+    String api, cityname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,9 +62,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_view);
+        api = "1f87c2e14a5fcd54f054b77221a8d96f";
+        sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+        //cityname = sharedPreferences.getString("cityname", "Pasig");
+        cityname = Settings.loadData(this);
 
-
-       
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
@@ -80,8 +85,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         findWeather();
     }
+
+
+
     public void findWeather(){
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=Manila&appid=89b8820d9a2b92875e415abc2e38c168&units=imperial";
+        String url = "http://api.openweathermap.org/data/2.5/weather?q="+ cityname +"&appid=1f87c2e14a5fcd54f054b77221a8d96f&units=imperial";
+        //String url = "http://api.openweathermap.org/data/2.5/weather?q=" + cityname + "&appid=89b8820d9a2b92875e415abc2e38c168&units=imperial";
         JsonObjectRequest jor = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -113,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     String formatted_date = sdf.format(calendar.getTime());
 
                     date.setText(formatted_date);
-
+                    Log.d("oo", Jstatus);
                     hum.setText(Jhum.concat("%"));
                     rain.setText(Jrain.concat("mm"));
                     double temp_int = Double.parseDouble(Jtemp);

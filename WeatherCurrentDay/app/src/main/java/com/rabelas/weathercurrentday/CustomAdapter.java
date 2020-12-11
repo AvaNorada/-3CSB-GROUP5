@@ -1,6 +1,7 @@
 package com.rabelas.weathercurrentday;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,22 +13,22 @@ import java.util.ArrayList;
 public class CustomAdapter extends BaseAdapter {
     ArrayList<EvacCenter> evacList;
     Context context;
-
+    SharedPreferences sharedPreferences;
+    String cityname;
     CustomAdapter(Context context) {
         evacList = new ArrayList<>();
         this.context=context;
 
+        cityname = Settings.loadData(context);
+
         String[] ename = context.getResources().getStringArray(R.array.eName);
         String[] city = context.getResources().getStringArray(R.array.City);
-        /*String[] menu = context.getResources().getStringArray(R.array.MainMenu);
-        String[] guidelines = context.getResources().getStringArray(R.array.Guidelines);
-        String[] equake = context.getResources().getStringArray(R.array.Earthquake);
-        String[] typhoon = context.getResources().getStringArray(R.array.Typhoon);
-        String[] veruption = context.getResources().getStringArray(R.array.VolcanicEruption);*/
 
 
         for (int i = 0; i < ename.length; i++) {
-            evacList.add(new EvacCenter(ename[i], city[i])); //menu[i], guidelines[i], equake[i], typhoon[i], veruption[i]));
+            if(city[i].equals(cityname)){
+                evacList.add(new EvacCenter(ename[i], city[i]));
+            }
         }
     }
 
