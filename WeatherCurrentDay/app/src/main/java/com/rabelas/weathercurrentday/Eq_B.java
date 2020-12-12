@@ -1,5 +1,6 @@
 package com.rabelas.weathercurrentday;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +12,17 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.rabelas.weathercurrentday.models.WebpageData;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+
 
 public class Eq_B extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Toolbar toolbar;
@@ -36,9 +46,6 @@ public class Eq_B extends AppCompatActivity implements NavigationView.OnNavigati
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-    }
-
-
         final TextView bodyText= findViewById(R.id.webBody);
         //final TextView titleText= findViewById(R.id.webTitle);
 
@@ -55,7 +62,11 @@ public class Eq_B extends AppCompatActivity implements NavigationView.OnNavigati
                     //Document Fdoc =  Jsoup.connect("http://people360.com.ph/what-to-do-before-during-and-after-a-typhoon").get();
 
                     Elements EText = Edoc.select("#divEditor69697407-c5dd-435d-8184-85e3d7c18d9e");
+                    //Element VText = Vdoc.body();
+                    //Elements VText = Vdoc.select("div.mk-single-content.clearfix");
+                    //Elements FText = Fdoc.select("#content");
 
+                    // Element bodyText = Edoc.body();
                     data.setPageBody(EText.text());
 
 
@@ -72,6 +83,26 @@ public class Eq_B extends AppCompatActivity implements NavigationView.OnNavigati
                     //before.extractText("ERUPTION","AFTER");//this is dependent on the line above,
                     //before.extractText("EXPLOSION","DURING");//this is dependent on the line above,
                     //before.setPageTitle(EBdoc.title());
+
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {//Set to textview thru WebpageData object
+                        // titleText.setText(before.getPageTitle());
+                        bodyText.setText(data.getPageBody());
+                    }
+                });
+            }
+        }).start();
+
+
+
+    }
+
+
 
 
     @Override
