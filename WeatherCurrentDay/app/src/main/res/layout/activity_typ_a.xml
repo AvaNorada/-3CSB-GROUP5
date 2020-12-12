@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Typ_A"
+    tools:context=".Eq_A"
     android:id="@+id/drawer"
     tools:openDrawer="start"
     android:fitsSystemWindows="true">
@@ -17,13 +17,34 @@
         app:menu="@menu/main_menu"
         android:layout_gravity="start"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/cLayout">
+        tools:context=".MainActivity">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/cLayout">
 
-        <include
-            android:id="@+id/tool_bar"
-            layout="@layout/toolbar"/>
+            <include
+                android:id="@+id/tool_bar"
+                layout="@layout/toolbar"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/webBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:justificationMode="inter_word"
+                android:padding="40dp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tool_bar"
+                app:layout_constraintVertical_bias="1.0"></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>
